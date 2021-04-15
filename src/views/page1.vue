@@ -1,5 +1,8 @@
 <template>
-  <LazyImage :src="img" v-for="(img, i) in imgs" :key="i"/>
+  <div class="wrapper">
+    <LazyImage :src="img" v-for="(img, i) in imgs" :key="i"/>
+  </div>
+  
 </template>
 
 <script lang="ts">
@@ -20,3 +23,11 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="less" scoped>
+.wrapper {
+  overflow: scroll;
+  height: 100%;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+</style>

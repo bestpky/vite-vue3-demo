@@ -3,18 +3,21 @@
     <template v-if="loading">
       <div class="img-loading">loading</div>
     </template>
-    <img v-else class="el-image__inner" :src="src_" alt="">
+    <img v-else class="el-image__inner"
+     :src="src_" 
+     :style="{width: `${imageWidth}px`, height: `${imageHeight}px`}"
+      alt="">
   </div>
 </template>
 <script lang="ts">
-import {defineComponent, getCurrentInstance, ref, onMounted, reactive, toRefs, watch,} from 'vue'
+import {defineComponent, getCurrentInstance,onUnmounted, ref, onMounted, reactive, toRefs, watch, computed,} from 'vue'
 import loadImage from '../utils/load-image'
 import {FileLike} from '../utils/is-file-like'
-
+import 'intersection-observer'
 const observeVm = new WeakMap();
 const io = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
-    console.log(entry.intersectionRatio,i)
+  console.log(entry.intersectionRatio)
     if (entry.intersectionRatio > 0) {
       const vm = observeVm.get(entry.target);
       vm.entry = true;
@@ -23,7 +26,7 @@ const io = new IntersectionObserver(entries => {
 }, {
   root: null,
   rootMargin: '0px',
-  threshold: 0.5,
+  threshold: 0.2,
 });
 
 export default defineComponent({
@@ -34,7 +37,7 @@ export default defineComponent({
     },
 
   },
-  setup(props, {}){
+  setup(props){
     const root = ref()
     const state = reactive({
       src_: '',
@@ -62,6 +65,12 @@ export default defineComponent({
         io.observe(root.value);
       }
     }
+    function removeLazyLoadListener() {
+      if (observeVm.has(root.value)) {
+        io.unobserve(root.value);
+        observeVm.delete(root.value);
+      }
+    }
 
     onMounted(() => {
       addLazyLoadListener()
@@ -71,6 +80,11 @@ export default defineComponent({
         }
       })
     })
+
+    // onUnmounted(() => {
+    //   removeLazyLoadListener()
+    // })
+
 
     return {
       root,
@@ -84,6 +98,5 @@ export default defineComponent({
 .el-image {
   width: 100%;
   height: 100%;
-  color: #909399;
 }
 </style>
