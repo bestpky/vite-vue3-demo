@@ -8,6 +8,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Sider from './views/Sider.vue'
+import './common.less'
 
 export default defineComponent({
   name: 'App',

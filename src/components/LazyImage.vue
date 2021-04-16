@@ -10,23 +10,22 @@
   </div>
 </template>
 <script lang="ts">
-import {defineComponent, getCurrentInstance,onUnmounted, ref, onMounted, reactive, toRefs, watch, computed,} from 'vue'
+import {defineComponent, getCurrentInstance, ref, onMounted, reactive, toRefs, watch, computed,} from 'vue'
 import loadImage from '../utils/load-image'
-import {FileLike} from '../utils/is-file-like'
 import 'intersection-observer'
 const observeVm = new WeakMap();
 const io = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
-  console.log(entry.intersectionRatio)
     if (entry.intersectionRatio > 0) {
       const vm = observeVm.get(entry.target);
+      console.log(vm)
       vm.entry = true;
     }
   });
 }, {
   root: null,
   rootMargin: '0px',
-  threshold: 0.2,
+  threshold: 0.5,
 });
 
 export default defineComponent({

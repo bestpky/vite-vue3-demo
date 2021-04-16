@@ -21,15 +21,12 @@ export default function generateAutoRoute({path,requireContext}: Params) {
   const indexKeys: string[] = [];
   const folderKeys: {[basePath: string]: string[]} = {};
   const otherKeys: string[] = [];
-  console.log(keys)
   keys.forEach(key => {
-    console.log(key)
     if (rIndex.test(key)) {
       indexKeys.push(key);
     } else {
     }
   })
-  console.log(indexKeys)
 }
 
 export { generateAutoRoute }

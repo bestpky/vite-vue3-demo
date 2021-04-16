@@ -1,7 +1,7 @@
 <template>
   <aside>
-    <router-link to="/demo">demo</router-link>
-    
+    <router-link to="/page1">page1</router-link>
+    <router-link to="/page2">page2</router-link>
   </aside>
 </template>
 

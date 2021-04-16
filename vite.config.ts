@@ -5,7 +5,9 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  alias: {
-    '/@views': path.resolve(__dirname, './src/views')
+  resolve: {
+    alias: {
+      '/@views': path.resolve(__dirname, './src/views')
+    }
   }
 })
