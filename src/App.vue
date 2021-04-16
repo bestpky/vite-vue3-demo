@@ -1,8 +1,5 @@
 <template>
-  <aside>
-      <router-link to="/page1">page1</router-link>
-      <router-link to="/page2">page2</router-link>
-    </aside>
+    <Sider/>
     <main>
       <router-view></router-view>
     </main>
@@ -10,9 +7,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Sider from './views/Sider.vue'
 
 export default defineComponent({
   name: 'App',
+  components: {
+    Sider
+  }
 })
 </script>
 
@@ -32,16 +33,6 @@ body {
 }
 </style>
 <style lang="less" scoped>
-aside {
-  flex-basis: 200px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #ccc;
-  a {
-    text-align: center;
-  }
-}
 main {
   flex: auto;
 }

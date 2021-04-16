@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import {defineComponent, ref} from 'vue'
-import vuelogo from '../assets/logo.png'
-import LazyImage from '../components/LazyImage.vue'
+import LazyImage from '../../components/LazyImage.vue'
+import vuelogo from '../../assets/logo.png'
 
 export default defineComponent({
   components: {
