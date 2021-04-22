@@ -1,7 +1,7 @@
 <template>
   <aside>
-    <router-link to="/page1">page1</router-link>
-    <router-link to="/page2">page2</router-link>
+    <router-link to="/page1">懒加载</router-link>
+    <router-link to="/page2">鼠标右键</router-link>
   </aside>
 </template>
 
