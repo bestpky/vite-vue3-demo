@@ -1,18 +1,32 @@
-import { provide, inject, reactive, createApp, h, App } from 'vue';
+import { provide, inject, reactive, createApp, App, createVNode } from 'vue';
+import comp from './index.vue'
+
+type Command = {
+  text: string
+  run: () => void
+}
+
+type Comands = {
+  [key: string]: Command
+}
 
 const ContextMenuSymbol = Symbol();
 
 let contextMenuVM: App | null = null
 let wrapper: HTMLDivElement | null = null
+let globalCommands: Comands = {}
 
-const _contextMenu = () => {
+const state = reactive({
+  position: [0, 0]
+});
+
+const _contextMenu = (e: MouseEvent, c?: Comands) => {
+  state.position = [e.clientX,e.clientY]
+  globalCommands = {...globalCommands, ...c}
   if(!contextMenuVM) {
     contextMenuVM = createApp({
       setup() {
-        return () => 
-          h(
-            'div',
-          )
+        return () => createVNode(comp, {commands: globalCommands, position: state.position})
       }
     })
   }
@@ -22,17 +36,18 @@ const _contextMenu = () => {
     wrapper.id = 'context-menu';
     document.body.appendChild(wrapper);
     contextMenuVM.mount('#context-menu');
-}
+  }
 }
 
-export function provideContextMenu(commands) {
+export function provideContextMenu(commands: Comands) {
+  globalCommands = {...globalCommands, ...commands}
   provide(ContextMenuSymbol, _contextMenu);
 }
 
 export function useContextMenu() {
-  const cm = inject(ContextMenuSymbol);
-    if (!cm) {
-        throw new Error('error');
-    }
-    return cm;
+  const cm: any = inject(ContextMenuSymbol);
+  if (!cm) {
+      throw new Error('error');
+  }
+  return cm;
 }

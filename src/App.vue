@@ -9,11 +9,22 @@
 import { defineComponent } from 'vue'
 import Sider from './views/Sider.vue'
 import './common.less'
+import {provideContextMenu} from './plugins/context-menu'
 
 export default defineComponent({
   name: 'App',
   components: {
     Sider
+  },
+  setup() {
+    provideContextMenu({
+      log: {
+        text: '打印',
+        run() {
+          console.log('打印')
+        }
+      }
+    })
   }
 })
 </script>
