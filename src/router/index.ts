@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import page1 from '/@views/page1.vue'
 import page2 from '/@views/page2.vue'
+import page3 from '/@views/page3.vue'
 
 const routes = [
   { 
@@ -13,6 +14,9 @@ const routes = [
   },{
     path: '/page2',
     component: page2,
+  },{
+    path: '/page3',
+    component: page3,
   }
 ];
 
