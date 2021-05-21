@@ -18,7 +18,6 @@ const io = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
     if (entry.intersectionRatio > 0) {
       const vm = observeVm.get(entry.target);
-      console.log(vm)
       vm.entry = true;
     }
   });

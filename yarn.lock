@@ -173,10 +173,10 @@
   resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.11.tgz?cache=0&sync_timestamp=1617321555263&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.0.11.tgz#20d22dd0da7d358bb21c17f9bde8628152642c77"
   integrity sha1-INIt0Np9NYuyHBf5vehigVJkLHc=
 
-ant-design-vue@next@^2.1.2:
-  version "2.1.4"
-  resolved "https://registry.nlark.com/ant-design-vue/download/ant-design-vue-2.1.4.tgz?cache=0&sync_timestamp=1620568654362&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fant-design-vue%2Fdownload%2Fant-design-vue-2.1.4.tgz#631595573794abb3d359552d0c31f0ee1bd8bf8f"
-  integrity sha1-YxWVVzeUq7PTWVUtDDHw7hvYv48=
+ant-design-vue@^2.1.2:
+  version "2.1.6"
+  resolved "https://registry.nlark.com/ant-design-vue/download/ant-design-vue-2.1.6.tgz?cache=0&sync_timestamp=1620892630050&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fant-design-vue%2Fdownload%2Fant-design-vue-2.1.6.tgz#c51cdc858e1b1b8b569f5435eb487f53a3f1745e"
+  integrity sha1-xRzchY4bG4tWn1Q160h/U6PxdF4=
   dependencies:
     "@ant-design-vue/use" "^0.0.1-0"
     "@ant-design/icons-vue" "^6.0.0"
@@ -186,6 +186,7 @@ ant-design-vue@next@^2.1.2:
     async-validator "^3.3.0"
     dom-align "^1.10.4"
     dom-scroll-into-view "^2.0.0"
+    lodash "^4.17.21"
     lodash-es "^4.17.15"
     moment "^2.27.0"
     omit.js "^2.0.0"
@@ -539,7 +540,7 @@ lodash.camelcase@^4.3.0:
   resolved "https://registry.npm.taobao.org/lodash.camelcase/download/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
 
-lodash@^4.17.15, lodash@^4.17.19:
+lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
