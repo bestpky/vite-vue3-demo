@@ -1,8 +1,6 @@
 <template>
-  <DragSort v-model="list">
-    <template #default="{ item }">
-      <span>{{ item.label }}</span>
-    </template>
+  <DragSort v-model="list" v-slot="{label}">
+    <span>{{ label }}</span>
   </DragSort>
 </template>
 

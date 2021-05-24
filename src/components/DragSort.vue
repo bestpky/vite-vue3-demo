@@ -6,7 +6,7 @@
      @dragend="handleDragEnd(item, i)"
      @dragover="(e) => e.preventDefault()" 
      >
-      <slot :item="item">{{item}}</slot>
+      <slot :label="item.label"></slot>
     </li>
   </transition-group>
 </template>
