@@ -1,4 +1,4 @@
-import { provide, inject, reactive, createApp, App, createVNode } from 'vue';
+import { provide, inject, createApp, createVNode } from 'vue';
 import comp from './index.vue'
 
 type Command = {
@@ -12,30 +12,29 @@ type Comands = {
 
 const ContextMenuSymbol = Symbol();
 
-let contextMenuVM: App | null = null
-let wrapper: HTMLDivElement | null = null
-let globalCommands: Comands = {}
+let wrapper: HTMLDivElement | null = null,
+// 全局的意义：支持provide时初始化和inject时扩展
+globalCommands: Comands = {}
 
-const state = reactive({
-  position: [0, 0]
-});
-
+// 参数是inject调用时传入的
 const _contextMenu = (e: MouseEvent, c?: Comands) => {
-  state.position = [e.clientX,e.clientY]
   globalCommands = {...globalCommands, ...c}
-  if(!contextMenuVM) {
-    contextMenuVM = createApp({
-      setup() {
-        return () => createVNode(comp, {commands: globalCommands, position: state.position})
-      }
-    })
-  }
+  
+  const contextMenuVM = createApp({
+    setup() {
+      return () => createVNode(comp, {commands: globalCommands, position: [e.clientX,e.clientY]})
+    }
+  })
+  
   if (!wrapper) {
     // 如果该节点以经存在则不重新创建
     wrapper = document.createElement('div');
     wrapper.id = 'context-menu';
     document.body.appendChild(wrapper);
-    contextMenuVM.mount('#context-menu');
+  }
+  contextMenuVM.mount(wrapper);
+  return () => {
+    contextMenuVM?.unmount()
   }
 }
 

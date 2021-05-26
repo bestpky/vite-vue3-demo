@@ -1,5 +1,7 @@
 <template>
-  <div :style="{background}" @contextmenu.stop.prevent="handleContextMenu" class="block"></div>
+  <div @click="closeContextMenu">
+    <div :style="{background}" @contextmenu.stop.prevent="openContextMenu" class="block"></div>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
@@ -9,19 +11,24 @@ export default defineComponent({
   setup() {
     const cm = useContextMenu()
     const background = ref()
-    function handleContextMenu(e: MouseEvent) {
-      cm(e, {
+    let cancelFunc: () => void
+    function openContextMenu(e: MouseEvent) {
+      cancelFunc = cm(e, {
         changeColor: {
-          text: '变色',
+          text: '变色（inject）',
           run() {
-            background.value = 'red'
+            background.value = background.value === 'red' ? '#ff0' : 'red'
           }
         }
       })
     }
+    function closeContextMenu() {
+      cancelFunc()
+    }
     return {
-      handleContextMenu,
-      background
+      openContextMenu,
+      background,
+      closeContextMenu
     }
   },
 })

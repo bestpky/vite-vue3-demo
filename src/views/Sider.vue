@@ -1,7 +1,7 @@
 <template>
   <aside>
     <router-link to="/page1">懒加载</router-link>
-    <router-link to="/page2">鼠标右键</router-link>
+    <router-link to="/page2">鼠标右键插件</router-link>
     <router-link to="/page3">自动省略</router-link>
     <router-link to="/page4">拖拽排序</router-link>
   </aside>

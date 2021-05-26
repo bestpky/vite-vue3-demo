@@ -19,7 +19,7 @@ export default defineComponent({
   setup() {
     provideContextMenu({
       log: {
-        text: '打印',
+        text: '打印（provide）',
         run() {
           console.log('打印')
         }
