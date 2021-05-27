@@ -1,0 +1,30 @@
+[class*=' scrollable'],
+[class^='scrollable'] {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    &.scrollable-y {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: transparent;
+        transition: background-color 0.5s;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+}
+
+li {
+    list-style: none;
+}
