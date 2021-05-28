@@ -1,13 +1,15 @@
-const contexts = import.meta.globEager('./*.ts')
-import { Ref } from 'vue'
-
-type Modules = {
-    [key: string]: Ref | (() => void)
+interface StoreItem {
+    key: Symbol
+    store: any
 }
+let stores: StoreItem[] = []
 
-let modules: Modules = {}
+const contexts = import.meta.globEager('./*.ts')
 Object.keys(contexts).forEach(key => {
-    Object.assign(modules, contexts[key].default)
+    stores.push({
+        key: contexts[key].storeKey,
+        store: contexts[key].default
+    })
 })
 
-export default modules
+export default stores

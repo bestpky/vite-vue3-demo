@@ -1,11 +1,7 @@
-import { ref } from 'vue'
+import { ref, InjectionKey } from 'vue'
 
-const namespace = 'counter'
-
-const r = (ac: string) => `store/${namespace}/${ac}`
-
-export const GETTER_COUNTER = r('GETTER_COUNTER')
-export const ADD = r('ADD')
+export const storeKey: InjectionKey<ReturnType<typeof storeModel>> = Symbol('counter')
+export const counterStoreKey = storeKey
 
 const storeModel = () => {
     const counter = ref(0)
@@ -15,8 +11,8 @@ const storeModel = () => {
     }
 
     return {
-        [GETTER_COUNTER]: counter,
-        [ADD]: add
+        counter,
+        add
     }
 }
 

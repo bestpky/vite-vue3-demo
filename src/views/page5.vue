@@ -1,20 +1,16 @@
 <script lang="ts">
-import { defineComponent, h, inject, Ref } from 'vue'
-import { GETTER_COUNTER, ADD } from '../store/counter'
-import { GETTER_USER, GET_USER, SET_USER, User } from '../store/users'
+import { defineComponent, h, inject } from 'vue'
+import { counterStoreKey } from '../store/counter'
+import { userStoreKey } from '../store/users'
 
 const Child1 = defineComponent({
     setup() {
-        const counter = inject<number>(GETTER_COUNTER)
-        const user = inject<User>(GETTER_USER)
-        const getUser = inject<() => Promise<User>>(GET_USER)
-        const setUser = inject<(user: User) => void>(SET_USER)
-        if (getUser && setUser) {
-            getUser().then(user => user && setUser(user))
-        }
+        const counterStore = inject(counterStoreKey)
+        const userStore = inject(userStoreKey)
+        userStore?.getUser().then(user => user && userStore?.setUser(user))
         return {
-            counter,
-            user
+            counter: counterStore?.counter,
+            user: userStore?.user
         }
     },
     render() {
@@ -30,11 +26,11 @@ const Child1 = defineComponent({
 })
 const Child2 = defineComponent({
     setup() {
-        const add = inject<() => void>(ADD)
-        const setUser = inject<(user: User) => void>(SET_USER)!
+        const counterStore = inject(counterStoreKey)
+        const userStore = inject(userStoreKey)
         return {
-            add,
-            setUser
+            add: counterStore?.add,
+            setUser: userStore?.setUser
         }
     },
     render() {
@@ -46,6 +42,7 @@ const Child2 = defineComponent({
                 'button',
                 {
                     onclick: () =>
+                        setUser &&
                         setUser({
                             name: '李四',
                             age: 20
