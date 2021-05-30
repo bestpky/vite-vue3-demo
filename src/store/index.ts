@@ -1,15 +1,12 @@
-interface StoreItem {
-    key: Symbol
-    store: any
+import { App } from 'vue'
+
+export function createStore() {
+    return {
+        install(app: App) {
+            const contexts = import.meta.globEager('./*.ts')
+            Object.keys(contexts).forEach(key => {
+                app.provide(contexts[key].storeKey, contexts[key].default)
+            })
+        }
+    }
 }
-let stores: StoreItem[] = []
-
-const contexts = import.meta.globEager('./*.ts')
-Object.keys(contexts).forEach(key => {
-    stores.push({
-        key: contexts[key].storeKey,
-        store: contexts[key].default
-    })
-})
-
-export default stores

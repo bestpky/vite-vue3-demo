@@ -11,7 +11,6 @@
 import { defineComponent, provide } from 'vue'
 import Sider from './views/Sider.vue'
 import { provideContextMenu } from './plugins/context-menu'
-import stores from './store'
 
 export default defineComponent({
     name: 'App',
@@ -19,9 +18,6 @@ export default defineComponent({
         Sider
     },
     setup() {
-        // 全局store注入
-        stores.forEach(({ store, key }) => provide(key, store))
-
         provideContextMenu({
             log: {
                 text: '打印（provide）',
