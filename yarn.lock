@@ -65,10 +65,10 @@
   resolved "https://registry.npm.taobao.org/@ctrl/tinycolor/download/@ctrl/tinycolor-3.4.0.tgz?cache=0&sync_timestamp=1612895880147&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ctrl%2Ftinycolor%2Fdownload%2F%40ctrl%2Ftinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
   integrity sha1-w8WuVDyJfKqcKmhjC+01W+X5mQ8=
 
-"@pky/fe-utils@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.nlark.com/@pky/fe-utils/download/@pky/fe-utils-0.1.2.tgz#25cc4e03535fd40fe94e1968e73983e271fa6f6d"
-  integrity sha1-JcxOA1Nf1A/pThlo5zmD4nH6b20=
+"@pky/fe-utils@^0.1.0":
+  version "0.1.8"
+  resolved "https://registry.nlark.com/@pky/fe-utils/download/@pky/fe-utils-0.1.8.tgz#829ce522aa4b64495adff30c87b00abf228a02f0"
+  integrity sha1-gpzlIqpLZEla3/MMh7AKvyKKAvA=
 
 "@simonwep/pickr@~1.8.0":
   version "1.8.0"

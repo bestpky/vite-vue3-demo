@@ -5,7 +5,7 @@
             :key="item[keyAttr]"
             :draggable="true"
             @dragstart="handleDragstart(item)"
-            @dragenter="handleDragEnter()"
+            @dragenter="handleDragEnter(item)"
             @dragend="handleDragEnd()"
             @dragover="e => e.preventDefault()"
         >
@@ -16,7 +16,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, getCurrentInstance, watch } from 'vue'
-import { throttle } from '../utils/throttle'
+import { throttle } from '@pky/fe-utils'
+import { ItemGroup } from 'ant-design-vue/lib/vc-menu'
 
 export default defineComponent({
     props: {
